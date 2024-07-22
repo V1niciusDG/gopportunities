@@ -1,0 +1,18 @@
+# Binaries
+
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test
+
+*.Test
+
+# Coverage
+
+*.out
+
+# Variables
+
+.env
