@@ -33,6 +33,7 @@ func InitializePostgres() (*gorm.DB, error) {
 		return nil, err
 	}
 
+	// Checks if the database exists 
 	var exists bool
 	result := db.Raw("SELECT EXISTS(SELECT 1 FROM pg_database WHERE datname = 'postgo')").Scan(&exists)
 	if result.Error != nil {
