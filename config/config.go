@@ -33,3 +33,12 @@ func GetLogger(p string) *Logger {
 	logger = NewLogger(p)
 	return logger
 }
+
+func GetExampleEnv() {
+	err := createExampleEnv()
+	if err != nil {
+		fmt.Printf("Error: %v\n", err)
+	} else {
+		fmt.Println("example.env created successfully.")
+	}
+}
