@@ -12,7 +12,7 @@ import (
 func DeleteOpeningHandler(ctx *gin.Context) {
 	id := ctx.Param("id")
 	if id== "" {
-		sendError(ctx, http.StatusBadRequest, errParamIsRequired("id", "queryParameter").Error())
+		sendError(ctx, http.StatusBadRequest, errParamIsRequired("id", "urlParameter").Error())
 		return
 	}
 	opening := schemas.Opening{}
