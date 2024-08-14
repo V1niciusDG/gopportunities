@@ -1,15 +1,25 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"github.com/V1niciusDG/gopportunities/config"
+	"github.com/V1niciusDG/gopportunities/router"
 )
 
+var (
+	logger *config.Logger
+)
+
+
 func main() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	r.Run()
+logger = config.GetLogger("main")
+config.GetExampleEnv()
+	// initialize configs
+	err := config.Init()
+	if err != nil{
+		logger.Errorf("config initialization error: %v", err)
+		return
+	}
+
+	//chama router
+	router.Initialize()
 }
