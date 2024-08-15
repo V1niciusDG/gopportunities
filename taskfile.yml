@@ -1,0 +1,29 @@
+version: '3'
+
+vars:
+  app_name: gopportunities
+
+tasks:
+  docker:
+    cmds:
+      - docker-compose up
+  run:
+    cmds:
+      - go run main.go
+  run-with-docs:
+    cmds:
+      - swag init
+      - go run main.go
+  build:
+    cmds:
+      - go build -o {{.app_name}} main.go
+  test:
+    cmds:
+      - go test ./...
+  docs:
+    cmds:
+      - swag init
+  clean:
+    cmds:
+      - rm -f {{.app_name}}
+      - rm -rf ./docs
